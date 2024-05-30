@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using StudentPortal.Web.Data;
 
 namespace StudentPortal.Web
@@ -10,7 +11,8 @@ namespace StudentPortal.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<ApplicationDbContext>();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseNpgsql(ApplicationDbContext.configsql));
 
             var app = builder.Build();
 
